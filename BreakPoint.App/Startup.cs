@@ -1,19 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using BreakPoint.App.Data;
-using BreakPoint.App.Models;
-using BreakPoint.App.Services;
-
-namespace BreakPoint.App
+﻿namespace BreakPoint.App
 {
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using BreakPoint.Data;
+    using BreakPoint.Data.EntityModels;
+    using BreakPoint.Services.Interfaces;
+    using BreakPoint.Services.ServiceModels;
+
     public class Startup
     {
         public Startup(IConfiguration configuration)
@@ -26,11 +23,11 @@ namespace BreakPoint.App
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationDbContext>(options =>
+            services.AddDbContext<BreakPointDbContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));
 
-            services.AddIdentity<ApplicationUser, IdentityRole>()
-                .AddEntityFrameworkStores<ApplicationDbContext>()
+            services.AddIdentity<User, IdentityRole>()
+                .AddEntityFrameworkStores<BreakPointDbContext>()
                 .AddDefaultTokenProviders();
 
             // Add application services.

@@ -18,4 +18,10 @@
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\BreakPoint.Data\BreakPoint.Data.csproj" />
+    <ProjectReference Include="..\BreakPoint.Models\BreakPoint.Models.csproj" />
+    <ProjectReference Include="..\BreakPoint.Services\BreakPoint.Services.csproj" />
+  </ItemGroup>
+
 </Project>
